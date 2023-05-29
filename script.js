@@ -12,9 +12,22 @@ const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+const btnPlay = document.querySelector('.btn--play');
+const btnClose = document.querySelector('.close-modal');
+const instruction = document.querySelector('.instruction');
+const overlay = document.querySelector('.overlay');
 
 //Starting conditions
 let scoresPlayer, playing, currentScore, activePlayer;
+
+const openModal = () => {
+  instruction.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+const closeModal = () => {
+  instruction.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
 const reset = () => {
   scoresPlayer = [0, 0];
   currentScore = 0;
@@ -42,6 +55,17 @@ const switchPlayer = function () {
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
 };
+
+//Reading the Instructions of the game
+btnPlay.addEventListener('click', openModal);
+btnClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !instruction.classList.contains('hidden')) {
+    closeModal();
+  }
+});
 
 //Reseting the Game
 btnNew.addEventListener('click', reset);
@@ -80,7 +104,7 @@ btnHold.addEventListener('click', function () {
       scoresPlayer[activePlayer];
 
     //2. Check if players score is >=100
-    if (scoresPlayer[activePlayer] >= 20) {
+    if (scoresPlayer[activePlayer] >= 100) {
       playing = false;
       document
         .querySelector(`.player--${activePlayer}`)

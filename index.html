@@ -25,12 +25,24 @@
           <p class="current-score" id="current--1">0</p>
         </div>
       </section>
+      <div class="instruction hidden">
+        <button class="close-modal">&times</button>
+        <span id="span">How to Play</span> <br />
+        <h2>
+          The player rolls a dice and accumulates points, once a One(1) is
+          rolled, the player loses his Points and The next player starts his
+          turn. You can Hold Points to immediately pass the Cursor to the Next
+          player. The First Player to get to a 100 Wins
+        </h2>
+      </div>
       <div class="message"></div>
+      <div class="overlay hidden"></div>
 
       <img src="dice-5.png" alt="Playing dice" class="dice" />
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
+      <button class="btn btn--play">❓Instructions</button>
     </main>
     <script src="script.js"></script>
   </body>
